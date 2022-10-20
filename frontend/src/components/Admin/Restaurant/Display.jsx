@@ -32,7 +32,7 @@ export const DisplayRestaurant = () => {
 
     const handleDelete = async(id) => {
         try {
-            //await axios.delete("http://localhost:3001/admin/restaurant/"+id)
+            await axios.delete("http://localhost:3001/admin/restaurant/"+id)
             window.location.reload()
         } catch (error) {
             

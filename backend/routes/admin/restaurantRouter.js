@@ -37,5 +37,16 @@ router.post('/', async(req,res) => {
     }
 })
 
+router.delete('/:id',async(req,res)=> {
+    try{
+        const restaurant = await Restaurant.findById(req.params.id)
+        res.send("restaurant deleted\n")
+        const r1 = await restaurant.delete()
+        //window.alert(`Restaurant "${restaurant.name}" is deleted`)  
+    }catch(err){
+        res.send('Error while deleting the restaurant object')
+    }
+
+})
 
 export default router
