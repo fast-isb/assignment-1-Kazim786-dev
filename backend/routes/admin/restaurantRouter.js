@@ -49,4 +49,21 @@ router.delete('/:id',async(req,res)=> {
 
 })
 
+router.put('/:id',async(req,res)=> {
+    try{
+        const restaurant = await Restaurant.findById(req.params.id)
+        restaurant.location.City=req.body.city
+        restaurant.location.street=req.body.street
+        restaurant.location.zipcode=req.body.zipcode
+        restaurant.restImg=req.body.restImg
+
+        //upsert:false => will not create new record if not exists
+        const r1 = await Restaurant.updateOne(Restaurant.findById(req.params.id),restaurant,{upsert:false})
+        res.json(r1)
+    }catch(err){
+        res.send('Error while updating the restaurant object'+err)
+    }
+
+})
+
 export default router

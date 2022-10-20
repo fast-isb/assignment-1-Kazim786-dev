@@ -49,7 +49,7 @@ export const DisplayRestaurant = () => {
                     <input type="text" placeholder='Reference No.' onChange={handleChange} name="refNo"/>
                     <button><Link to={`/${refNo}`}>Find</Link></button>
             </div>
-            <Carousel variant='dark' className='w-50' style={{margin: 'auto'}}>
+            <Carousel variant='light' className='w-50' style={{margin: 'auto'}}>
                     {resdata.map( (rest)=>(
                         <Carousel.Item key={rest._id} interval={1200}>
                             <img className="d-block w-100" src={rest.restImg} alt="Not available"/>
