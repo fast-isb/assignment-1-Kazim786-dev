@@ -19,9 +19,14 @@ con.on('open', () => {
 app.use(express.json())
 app.use(cors())
 
+
 // Manage restaurant by Admin
 import ManageResbyAdmin from './routes/admin/restaurantRouter.js'
 app.use('/admin/restaurant',ManageResbyAdmin)
+
+//Registration
+import register from './routes/registrationRouter.js'
+app.use('/',register)
 
 app.listen(port, () => {
     console.log(`Server started at port ${port}`)

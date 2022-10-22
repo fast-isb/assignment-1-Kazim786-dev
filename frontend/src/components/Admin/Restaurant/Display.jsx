@@ -57,11 +57,13 @@ export const DisplayRestaurant = () => {
             </div>
 
             <Row xs={1} md={3} className="g-4">
-                {resdata.map((rest) => (
-                    <Col key={rest._id}>
-                        <RestaurantCard rest={rest} />
-                    </Col>
-                ))}
+                {Array.isArray(resdata) ?
+                    resdata.map((rest) => (
+                        <Col key={rest._id}>
+                            <RestaurantCard rest={rest} />
+                        </Col>
+                    )) : <p>Not available</p>
+                }
             </Row>
             <div style={{ margin: '3%' }}>
                 <Button variant="outline-primary"><Link to={'/admin/restaurant/add'} style={{ textDecoration: 'none', color: "inherit" }}>Add New Restaurant</Link></Button>{' '}

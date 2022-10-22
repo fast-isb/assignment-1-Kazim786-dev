@@ -7,8 +7,7 @@ import axios from 'axios';
 
 function DisplayRestaurants(props) {
 
-    const navigate = useNavigate()
-
+    const navigate = useNavigate() 
     const handleDelete = async (id) => {
         try {
             await axios.delete("http://localhost:3001/admin/restaurant/" + id)
@@ -18,7 +17,7 @@ function DisplayRestaurants(props) {
 
         }
     }
-
+    
     return (
         <Card>
             <Card.Img variant="top" src={props.rest.restImg} alt="No image or network error" />
