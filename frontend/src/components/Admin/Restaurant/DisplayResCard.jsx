@@ -8,15 +8,14 @@ import axios from 'axios';
 function DisplayRestaurants(props) {
 
     const navigate = useNavigate() 
-    const handleDelete = async (id) => {
-        try {
-            await axios.delete("http://localhost:3001/admin/restaurant/" + id)
-            navigate('/admin/restaurant')
-            window.location.reload()
-        } catch (error) {
+    // const handleDelete = async (id) => {
+    //     try {
+    //         await axios.delete("http://localhost:3001/admin/restaurant/" + id)
+    //         navigate('/admin/restaurant')
+    //     } catch (error) {
 
-        }
-    }
+    //     }
+    // }
     
     return (
         <Card>
@@ -36,7 +35,7 @@ function DisplayRestaurants(props) {
                             style={{ color: 'inherit', textDecoration: 'none' }} >Update
                         </Link>
                     </Button>
-                    <Button style={{ margin: '5%' }} variant="danger" onClick={() => handleDelete(props.rest._id)}>
+                    <Button style={{ margin: '5%' }} variant="danger" onClick={() => props.handleDelete(props.rest._id) }>
                         Delete
                     </Button>
                 </Card.Footer>

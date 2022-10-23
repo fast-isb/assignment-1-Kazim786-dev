@@ -1,23 +1,30 @@
 import React from 'react';
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-//import axios from 'axios';
-export default function SignUp() {
+
+import { useAuth } from './authentication/auth';
+
+
+export default function Login( ) {
     {
         var adminEmail="admin@gmail.com"
         var adminPassword="admin"
 
-        const navigate = useNavigate()
+        const auth = useAuth()
+       // auth.logout()  // whenever user open login page page auth user is reset to null
+
+        const navigate = useNavigate()  // to navigate on different screens
 
         const [user,setUser] = useState({
             email:"",
             password:"",
-            role:"Admin"
+            role:""
         })
         const onChange = (e)=>{
             setUser( (m) => ({ ...m , [e.target.name]:e.target.value }) )
 
         }
+
         const onSubmit = async(e)=> {
             //e.preventDefault();
             const form = e.currentTarget;
@@ -29,14 +36,19 @@ export default function SignUp() {
             }
 
             if(user.email===adminEmail && user.password === adminPassword){
-                navigate('/admin/restaurant')
+                try {
+
+                    user.role="admin"
+                    auth.login(user)
+                    navigate('/admin/restaurant')
+                    //alert("Login Successfull")
+                    
+                } catch (error) {
+                    console.log("Error")
+                }
             }
 
-            try {
-                //navigate('/admin/restaurant')
-            } catch (error) {
-                console.log("Registration unsuccessful")
-            }
+            
         }
 
         return (

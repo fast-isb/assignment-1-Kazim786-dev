@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import RestaurantCard from './DisplayResCard'
 export const DisplayRestaurantById = () => {
 
@@ -29,14 +29,23 @@ export const DisplayRestaurantById = () => {
         fetchAllRestaurants()
     }, [refNo]
     )
-    
+    const navigate = useNavigate()
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete("http://localhost:3001/admin/restaurant/" + id)
+            navigate('/admin/restaurant')
+        } catch (error) {
+
+        }
+    }
+
     return (
         <div>
             <div className="SpecificRestaurants">
                 <h1>Restaurant With Given Reference #</h1>&nbsp;
 
         {/* CHECK IF SERVER SENT SOME DATA WITH GIVEN REF NO. */}
-                {resdata._id!==undefined ? <div> <RestaurantCard rest={resdata} /> </div> : <h5>No Restaurant with this Reference number</h5> }
+                {resdata._id!==undefined ? <div> <RestaurantCard rest={resdata} handleDelete={handleDelete} /> </div> : <h5>No Restaurant with this Reference number</h5> }
                             
                     
 

@@ -4,9 +4,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
+import { useAuth } from '../authentication/auth';
+
 function OffcanvasExample() {
 
   var expand = 'xxl';
+const auth=useAuth()
 
   return (
     <Navbar key={expand} bg="info" expand={expand} className="mb-3">
@@ -26,6 +29,9 @@ function OffcanvasExample() {
           <Offcanvas.Body>
             <Nav className="text-center flex-grow-1 pe-3 square border rounded border-secondary bg-info">
               <Nav.Link href="/admin/restaurant">Restaurants</Nav.Link>
+            </Nav>
+            <Nav className="text-center flex-grow-1 pe-3 square border rounded border-secondary bg-info">
+              <Nav.Link onClick={auth.logout} href="/login">Logout</Nav.Link>
             </Nav>
           </Offcanvas.Body>
         </Navbar.Offcanvas>

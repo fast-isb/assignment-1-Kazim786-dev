@@ -84,7 +84,7 @@ export default function SignUp() {
                         </button>
                     </div>
                     <div style={{margin:'5%'}}>
-                    <DropdownButton id="dropdown-basic-button" title="Login As">
+                    <DropdownButton id="dropdown-basic-button" title="SignIn As">
                         <Dropdown.Item href="#/action-1">Customer</Dropdown.Item>
                         <Dropdown.Item href="/login">Admin</Dropdown.Item>
                         <Dropdown.Item href="/">Manager</Dropdown.Item>

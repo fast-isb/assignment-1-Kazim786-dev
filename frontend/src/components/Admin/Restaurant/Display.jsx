@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 import AdminNavbar from '../navbar.jsx'
 import RestaurantCard from './DisplayResCard'
 
@@ -17,7 +17,7 @@ export const DisplayRestaurant = () => {
 
     const [resdata, setResdata] = useState([])
     const [refNo, setRefNo] = useState('')
-
+const navigate=useNavigate();
     useEffect(() => {
         const fetchAllRestaurants = async () => {
             try {
@@ -34,6 +34,18 @@ export const DisplayRestaurant = () => {
 
     const handleChange = (e) => {
         setRefNo(e.target.value)
+    }
+
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete("http://localhost:3001/admin/restaurant/" + id)
+            const res = await axios.get("http://localhost:3001/admin/restaurant");
+                setResdata(res.data);
+            //navigate('/admin/restaurant')
+            // window.location.reload()
+        } catch (error) {
+
+        }
     }
 
     return (
@@ -60,7 +72,7 @@ export const DisplayRestaurant = () => {
                 {Array.isArray(resdata) ?
                     resdata.map((rest) => (
                         <Col key={rest._id}>
-                            <RestaurantCard rest={rest} />
+                            <RestaurantCard rest={rest} handleDelete={handleDelete} />
                         </Col>
                     )) : <p>Not available</p>
                 }
