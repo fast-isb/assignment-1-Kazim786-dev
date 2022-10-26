@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation,useNavigate } from "react-router-dom";
 import RestaurantCard from './DisplayResCard'
+import AdminNavbar from '../navbar.jsx'
+
 export const DisplayRestaurantById = () => {
 
     let [resdata, setResdata] = useState(Object)
@@ -40,8 +42,9 @@ export const DisplayRestaurantById = () => {
     }
 
     return (
-        <div>
-            <div className="SpecificRestaurants">
+        <div className='DisplayCardByRefNo'>
+            <AdminNavbar />
+            <div className="SpecificRestaurants" style={{margin:'5%'}}>
                 <h1>Restaurant With Given Reference #</h1>&nbsp;
 
         {/* CHECK IF SERVER SENT SOME DATA WITH GIVEN REF NO. */}

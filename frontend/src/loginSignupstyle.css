@@ -23,6 +23,7 @@ h1,h2,h3,h4,h5,h6,label,span {
   padding: 40px 55px 45px 55px;
   border-radius: 15px;
   transition: all .3s;
+  display: inline-block;
 }
 .forgot-password,
 .forgot-password a {

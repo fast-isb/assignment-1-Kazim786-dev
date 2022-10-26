@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link,useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import AdminNavbar from '../navbar.jsx'
 import RestaurantCard from './DisplayResCard'
 
@@ -17,7 +17,7 @@ export const DisplayRestaurant = () => {
 
     const [resdata, setResdata] = useState([])
     const [refNo, setRefNo] = useState('')
-const navigate=useNavigate();
+
     useEffect(() => {
         const fetchAllRestaurants = async () => {
             try {
@@ -69,12 +69,14 @@ const navigate=useNavigate();
             </div>
 
             <Row xs={1} md={3} className="g-4">
-                {Array.isArray(resdata) ?
+                {Array.isArray(resdata) && resdata.length>0 ?
                     resdata.map((rest) => (
+                        
                         <Col key={rest._id}>
                             <RestaurantCard rest={rest} handleDelete={handleDelete} />
                         </Col>
-                    )) : <p>Not available</p>
+                    )) 
+                    : <p>No Restaurant available</p>
                 }
             </Row>
             <div style={{ margin: '3%' }}>

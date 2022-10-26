@@ -2,20 +2,11 @@
 import React from "react";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button'
-import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios';
+import { Link } from 'react-router-dom'
+
 
 function DisplayRestaurants(props) {
 
-    const navigate = useNavigate() 
-    // const handleDelete = async (id) => {
-    //     try {
-    //         await axios.delete("http://localhost:3001/admin/restaurant/" + id)
-    //         navigate('/admin/restaurant')
-    //     } catch (error) {
-
-    //     }
-    // }
     
     return (
         <Card>
