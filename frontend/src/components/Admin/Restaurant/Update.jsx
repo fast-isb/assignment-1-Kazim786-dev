@@ -12,15 +12,14 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 
 export const EditRestaurant = () => {
-    // const [rest, setRest] = useState({
-    //     name: "",
-    //     restImg: "",
-    //     city: "Islamabad",
-    //     street: "",
-    //     zipcode: null,
+    const [rest, setRest] = useState({
+        name: "",
+        restImg: "",
+        city: "Islamabad",
+        street: "",
+        zipcode: null,
 
-    // })
-    const [rest,setRest] =useState(null)
+    })
     const cities = ['Islamabad', 'Lahore', 'Gujranwala', 'Sialkot']
     const handleChange = (e) => {
         setRest((prev) => ({ ...prev, [e.target.name]: e.target.value }))
