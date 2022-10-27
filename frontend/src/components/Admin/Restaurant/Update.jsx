@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AdminNavbar from '../navbar.jsx'
 import Form from 'react-bootstrap/Form';
@@ -8,18 +8,19 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
-import FormGroup from "react-bootstrap/esm/FormGroup.js";
+// import FormGroup from "react-bootstrap/esm/FormGroup.js";
 
 
 export const EditRestaurant = () => {
-    const [rest, setRest] = useState({
-        name: "",
-        restImg: "",
-        city: "",
-        street: "",
-        zipcode: null,
+    // const [rest, setRest] = useState({
+    //     name: "",
+    //     restImg: "",
+    //     city: "Islamabad",
+    //     street: "",
+    //     zipcode: null,
 
-    })
+    // })
+    const [rest,setRest] =useState(null)
     const cities = ['Islamabad', 'Lahore', 'Gujranwala', 'Sialkot']
     const handleChange = (e) => {
         setRest((prev) => ({ ...prev, [e.target.name]: e.target.value }))
@@ -47,14 +48,32 @@ export const EditRestaurant = () => {
         }
         else {
             try {
-                await axios.put(`http://localhost:3001/admin/restaurant/${id}`, rest)
+                const x= await axios.put(`http://localhost:3001/admin/restaurant/${id}`, rest)
                 navigate('/admin/restaurant')
+                if(x)
+                    alert("Restaurant Info Updated Successfully!")
             } catch (error) {
                 console.log(`Error in creating the new restaurant  ==>  ${error}`)
             }
         }
         setValidated(true);
     };
+
+    // useEffect(() => {
+    //     const fetchRestaurant = async () => {
+    //         try {
+    //             const res = await axios.get("http://localhost:3001/admin/restaurant/"+id);
+    //             setRest(res.data);
+    //         }
+    //         catch (err) {
+    //             console.log("Error in fetching the restaurants. " + err)
+    //         }
+    //     }
+    //     fetchRestaurant()
+    // }, []
+    // )
+
+// console.log(rest)
 
     return (
 
@@ -74,7 +93,7 @@ export const EditRestaurant = () => {
                     <Row >
                         <Form.Group as={Col} md="8" controlId="validationCustom03">
                             <Dropdown style={{ marginTop: '6%' }}>
-                                <Dropdown.Toggle variant="primary" required>Islamabad</Dropdown.Toggle>
+                                <Dropdown.Toggle variant="primary" required>City</Dropdown.Toggle>
 
                                 <Dropdown.Menu required>
                                     {cities.map((city) => (

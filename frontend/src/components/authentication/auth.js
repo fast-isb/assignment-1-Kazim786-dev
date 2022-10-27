@@ -4,7 +4,14 @@ import { useState, createContext, useContext } from 'react'
 const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  let [user, setUser] = useState(null)
+
+  // useEffect(()=>{
+  //   const localUser=JSON.parse(localStorage.getItem('user'))
+  //   user=localUser
+  //   console.log(user)
+  //               console.log("ddd")
+  // },[user])
 
   const login = user => {
     setUser(user)
@@ -12,7 +19,6 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null)
-    localStorage.removeItem('user')
   }
 
   return (

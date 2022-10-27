@@ -4,10 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from '../authentication/auth';
 
 function OffcanvasExample() {
+
+  const navigate = useNavigate()
+  const GoBack = ()=>{
+    navigate(-1)
+  }
 
   var expand = 'xxl';
 const auth=useAuth()
@@ -31,6 +36,9 @@ const auth=useAuth()
             <Nav className="text-center flex-grow-1 pe-3 square border rounded border-secondary bg-info">
               {/* <Nav.Link href="/admin/restaurant">Restaurants</Nav.Link> */}
               <NavLink to='/admin/restaurant' style={{textDecoration:'none',color:'inherit'}}>Restaurants</NavLink>
+            </Nav>
+            <Nav className="text-center flex-grow-1 pe-3 square border rounded border-secondary bg-info">
+              <NavLink onClick={GoBack} style={{textDecoration:'none',color:'inherit'}}>Go Back</NavLink>
             </Nav>
             <Nav className="text-center flex-grow-1 pe-3 square border rounded border-secondary bg-info">
               {/* <Nav.Link onClick={auth.logout} href="/login">Logout</Nav.Link> */}

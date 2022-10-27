@@ -36,7 +36,9 @@ export const DisplayRestaurantById = () => {
         try {
             await axios.delete("http://localhost:3001/admin/restaurant/" + id)
             navigate('/admin/restaurant')
+            alert("Restaurant Deleted Successfully!")
         } catch (error) {
+            console.log(`Error : ${error}`)
 
         }
     }

@@ -17,7 +17,7 @@ export const DisplayRestaurant = () => {
 
     const [resdata, setResdata] = useState([])
     const [refNo, setRefNo] = useState('')
-
+    
     useEffect(() => {
         const fetchAllRestaurants = async () => {
             try {
@@ -31,7 +31,7 @@ export const DisplayRestaurant = () => {
         fetchAllRestaurants()
     }, []
     )
-
+    
     const handleChange = (e) => {
         setRefNo(e.target.value)
     }
@@ -40,7 +40,8 @@ export const DisplayRestaurant = () => {
         try {
             await axios.delete("http://localhost:3001/admin/restaurant/" + id)
             const res = await axios.get("http://localhost:3001/admin/restaurant");
-                setResdata(res.data);
+            setResdata(res.data);
+            alert("Restaurant Deleted Successfully!")
             //navigate('/admin/restaurant')
             // window.location.reload()
         } catch (error) {

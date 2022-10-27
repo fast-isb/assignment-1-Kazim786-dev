@@ -52,6 +52,7 @@ export const AddRestaurant = () => {
             try {
                 await axios.post("http://localhost:3001/admin/restaurant", rest)
                 navigate('/admin/restaurant')
+                alert("New Restaurant Added Successfully!")
             } catch (error) {
                 console.log(`Error in creating the new restaurant  ==>  ${error}`)
             }

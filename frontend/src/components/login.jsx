@@ -41,7 +41,7 @@ export default function Login( ) {
                     user.role="admin"
                     auth.login(user)
                     navigate('/admin/restaurant')
-                    //alert("Login Successfull")
+                    alert("Admin Login Successfull")
                     
                 } catch (error) {
                     console.log("Error")
