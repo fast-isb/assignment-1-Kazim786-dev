@@ -4,6 +4,8 @@ import Restaurant from '../../models/admin/restaurant.js'
 
 //, { find, findById }
 
+//Get all restaurants in sorted manner according to names
+
 router.get('/', async (req, res) => {
     try {
         const restaurants = await Restaurant.find()
@@ -15,12 +17,13 @@ router.get('/', async (req, res) => {
     }
 })
 
+//Get specific restaurant given by given reference number
 router.get('/:id', async (req, res) => {
     try {
         const restaurant = await Restaurant.find()
 
         // find restaurant by refno from array containg fetched results from database
-        res.json(restaurant.find(rest => rest.refNo === req.params.id))
+            res.json(restaurant.find(rest => rest.refNo === req.params.id))
     } catch (err) {
         res.send('Error ' + err)
     }
@@ -53,14 +56,19 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
     try {
         const restaurant = await Restaurant.findById(req.params.id)
-        restaurant.location.City = req.body.city
-        restaurant.location.street = req.body.street
-        restaurant.location.zipcode = req.body.zipcode
-        restaurant.restImg = req.body.restImg
+        if(restaurant){
+            restaurant.location.City = req.body.city
+            restaurant.location.street = req.body.street
+            restaurant.location.zipcode = req.body.zipcode
+            restaurant.restImg = req.body.restImg
 
-        //upsert:false => will not create new record if not exists
-        const r1 = await Restaurant.updateOne(Restaurant.findById(req.params.id), restaurant, { upsert: false })
-        res.json(r1)
+            //upsert:false => will not create new record if not exists
+            const r1 = await Restaurant.updateOne(Restaurant.findById(req.params.id), restaurant, { upsert: false })
+            res.json(r1)
+        }
+        else{
+            res.send("Restaurant doesn't exist")
+        }
     } catch (err) {
         res.send('Error while updating the restaurant object' + err)
     }
@@ -70,14 +78,18 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const restaurant = await Restaurant.findById(req.params.id)
-        res.send("restaurant deleted\n")
-        const r1 = await restaurant.delete()
+        if(restaurant){
+            const r1 = await restaurant.delete()
+            res.send("restaurant deleted\n")
+        }
+        else{
+            res.send("Restaurant doesn't exist")
+        }
         //window.alert(`Restaurant "${restaurant.name}" is deleted`)  
     } catch (err) {
-        res.send('Error while deleting the restaurant object')
+        res.send('Error while deleting the restaurant object\n'+err)
     }
 
 })
-
 
 export default router
