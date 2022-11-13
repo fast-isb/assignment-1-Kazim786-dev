@@ -1,6 +1,6 @@
 import request from "supertest";
-import app from "../index";
-import Db from '../db.js'
+import app from "../../index.js";
+import Db from '../../db.js'
 
 
 // describe('Test Db',()=>{
