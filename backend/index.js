@@ -2,10 +2,10 @@
 // const mongoose = require('mongoose')
 import express from 'express'
 import cors from "cors"
-import ConnectDb from './db.js';
+import Db from './db.js';
 
 
-ConnectDb()
+Db.connect()
 
 
 

@@ -3,13 +3,9 @@ import app from "../../index.js";
 import Db from '../../db.js'
 
 
-// describe('Test Db',()=>{
-//   test('Db start connection',()=>{
+  beforeAll(async () => await Db.connect());
 
-//   })
-// })
-
-beforeAll(async () => await Db());
+  afterAll(async() => await Db.disconnect());
 
 
 describe("Test the root path", () => {

@@ -13,4 +13,9 @@ const connect =()=>{
     })
 }
 
-export default connect
+const disconnect = ()=>{
+    mongoose.disconnect(uri)
+    con.off('close',()=>{console.log("Database disconnected!!!")})
+}
+
+export default {connect,disconnect}
