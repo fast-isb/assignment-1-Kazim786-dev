@@ -15,28 +15,28 @@ describe('Testing the Update Component',()=>{
         render(<MemoryRouter>
             <EditRestaurant/>
         </MemoryRouter>)
-        expect(screen.getByTestId('mainhead')).toHaveTextContent('Update Restaurant')
+       waitFor(()=> expect(screen.getByTestId('mainhead')).toHaveTextContent('Update Restaurant'))
     });
     test('Test url field',()=>{
         render(<MemoryRouter>
             <EditRestaurant/>
         </MemoryRouter>)
         
-        expect(screen.getByTestId('urlfield')).toBeInTheDocument() ;
+        waitFor(()=>expect(screen.getByTestId('urlfield')).toBeInTheDocument() )
     });
     test('Test zip code field',()=>{
         render(<MemoryRouter>
             <EditRestaurant/>
         </MemoryRouter>)
         
-        expect(screen.getByTestId('zipfield')).toBeInTheDocument() ;
+        waitFor(()=>expect(screen.getByTestId('zipfield')).toBeInTheDocument() )
     });
     test('Test address field',()=>{
         render(<MemoryRouter>
             <EditRestaurant/>
         </MemoryRouter>)
         
-        expect(screen.getByTestId('addressfield')).toBeInTheDocument() ;
+        waitFor(()=> expect(screen.getByTestId('addressfield')).toBeInTheDocument() )
     });
     
 })

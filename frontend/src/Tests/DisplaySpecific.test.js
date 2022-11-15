@@ -8,8 +8,8 @@ describe('Testing the DisplayRestaurantById Component',()=>{
         render(<MemoryRouter>
             <DisplayRestaurantById/>
         </MemoryRouter>)
-        expect(screen.getByTestId('mainhead')).toBeDefined()
-        expect(screen.getByTestId('mainhead')).toBeInTheDocument() ;
+        waitFor(()=>expect(screen.getByTestId('mainhead')).toBeDefined())
+        waitFor(()=>expect(screen.getByTestId('mainhead')).toBeInTheDocument()) ;
     });
 
 })

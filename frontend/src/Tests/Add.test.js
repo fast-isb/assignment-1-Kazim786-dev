@@ -16,14 +16,14 @@ describe('Testing the Add Component',()=>{
         render(<MemoryRouter>
             <AddRestaurant/>
         </MemoryRouter>)
-        expect(screen.getByTestId('mainhead')).toHaveTextContent('Add Restaurant')
+        waitFor(()=>expect(screen.getByTestId('mainhead')).toHaveTextContent('Add Restaurant'))
     });
     test('Test form Submit type button',()=>{
         render(<MemoryRouter>
             <AddRestaurant/>
         </MemoryRouter>)
         
-        expect(screen.getByText('Restaurant name')).toBeInTheDocument() ;
+        waitFor(()=>expect(screen.getByText('Restaurant name')).toBeInTheDocument() );
     });
 
     
