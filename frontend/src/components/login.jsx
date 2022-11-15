@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function Login( ) {
-    {
+    
         var adminEmail="admin@gmail.com"
         var adminPassword="admin"
 
@@ -86,5 +86,5 @@ export default function Login( ) {
                 </form>
             </div>
         )
-    }
+    
 }

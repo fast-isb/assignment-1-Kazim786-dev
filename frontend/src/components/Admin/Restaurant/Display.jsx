@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
-import AdminNavbar from '../navbar.jsx'
+// import AdminNavbar from '../navbar.jsx'
 import RestaurantCard from './DisplayResCard'
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
