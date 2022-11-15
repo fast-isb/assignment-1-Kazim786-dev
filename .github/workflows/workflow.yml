@@ -20,7 +20,8 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     defaults:
-      working-directory: './frontend'
+      run:
+        working-directory: './frontend'
 
     steps:
       - name: Checkout
