@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+ import axios from 'axios';
 import { Link } from 'react-router-dom'
 // import AdminNavbar from '../navbar.jsx'
 import RestaurantCard from './DisplayResCard'
@@ -22,6 +22,8 @@ export const DisplayRestaurant = () => {
         const fetchAllRestaurants = async () => {
             try {
                 //const res = await axios.get("http://localhost:3001/admin/restaurant");
+            
+                const res=null;  // remove it when comment out above line
                 setResdata(res.data);
             }
             catch (err) {
