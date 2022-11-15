@@ -1,6 +1,6 @@
-import axios from "axios";
+// import axios from "axios";
 import React from "react";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import AdminNavbar from '../navbar.jsx'
 import Form from 'react-bootstrap/Form';
@@ -47,7 +47,7 @@ export const EditRestaurant = () => {
         }
         else {
             try {
-                const x= await axios.put(`http://localhost:3001/admin/restaurant/${id}`, rest)
+                // const x= await axios.put(`http://localhost:3001/admin/restaurant/${id}`, rest)
                 navigate('/admin/restaurant')
                 if(x)
                     alert("Restaurant Info Updated Successfully!")
@@ -61,7 +61,7 @@ export const EditRestaurant = () => {
     // useEffect(() => {
     //     const fetchRestaurant = async () => {
     //         try {
-    //             const res = await axios.get("http://localhost:3001/admin/restaurant/"+id);
+    //            const res = await axios.get("http://localhost:3001/admin/restaurant/"+id);
     //             setRest(res.data);
     //         }
     //         catch (err) {
@@ -77,15 +77,15 @@ export const EditRestaurant = () => {
     return (
 
         <div>
-            <AdminNavbar />
+            {/* <AdminNavbar /> */}
             <span className="square border bg-info rounded border-danger" id="form" >
-                <h2>Update Restaurant</h2><br />
+                <h2 data-testid="mainhead">Update Restaurant</h2><br />
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
 
                     <Row >
                         <Form.Group as={Col} controlId="validationCustom02">
                             <Form.Label>Image Url</Form.Label>
-                            <Form.Control required type="text" placeholder="Paste Url here" onChange={handleChange} name="restImg" />
+                            <Form.Control data-testid="urlfield" required type="text" placeholder="Paste Url here" onChange={handleChange} name="restImg" />
                             <Form.Control.Feedback type="invalid">Please provide a valid Url</Form.Control.Feedback>
                         </Form.Group>
                     </Row>
@@ -107,7 +107,7 @@ export const EditRestaurant = () => {
                         
                         <Form.Group as={Col} md="4" controlId="validationCustom05">
                             <Form.Label>Zip</Form.Label>
-                            <Form.Control type="number" placeholder="Zip" onChange={handleChange} name="zipcode" required />
+                            <Form.Control data-testid="zipfield" type="number" placeholder="Zip" onChange={handleChange} name="zipcode" required />
                             <Form.Control.Feedback type="invalid">
                                 Please provide a valid zip.
                             </Form.Control.Feedback>
@@ -116,14 +116,14 @@ export const EditRestaurant = () => {
                     <Row >
                         <Form.Group as={Col} controlId="validationCustom03">
                             <Form.Label>Address</Form.Label>
-                            <Form.Control type="text" placeholder="Address" onChange={handleChange} name="street" required />
+                            <Form.Control data-testid="addressfield" type="text" placeholder="Address" onChange={handleChange} name="street" required />
                             <Form.Control.Feedback type="invalid">
                                 Please add some specific address.
                             </Form.Control.Feedback>
                         </Form.Group>
                     </Row>
 
-                    <Button type="submit">Update</Button>
+                    <Button data-testid="updresbtn" type="submit">Update</Button>
 
 
                 </Form>

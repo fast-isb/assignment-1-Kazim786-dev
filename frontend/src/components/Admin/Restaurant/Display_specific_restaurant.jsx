@@ -1,9 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { useLocation,useNavigate } from "react-router-dom";
 import RestaurantCard from './DisplayResCard'
-import AdminNavbar from '../navbar.jsx'
+// import AdminNavbar from '../navbar.jsx'
 
 export const DisplayRestaurantById = () => {
 
@@ -18,7 +18,7 @@ export const DisplayRestaurantById = () => {
     useEffect(() => {
         const fetchAllRestaurants = async () => {
             try {
-                const res = await axios.get("http://localhost:3001/admin/restaurant/" + refNo);
+                // const res = await axios.get("http://localhost:3001/admin/restaurant/" + refNo);
                 //const arr = [res.data]
                 // setResdata(arr.slice())
                 setResdata(res.data)
@@ -34,7 +34,7 @@ export const DisplayRestaurantById = () => {
     const navigate = useNavigate()
     const handleDelete = async (id) => {
         try {
-            await axios.delete("http://localhost:3001/admin/restaurant/" + id)
+            // await axios.delete("http://localhost:3001/admin/restaurant/" + id)
             navigate('/admin/restaurant')
             alert("Restaurant Deleted Successfully!")
         } catch (error) {
@@ -45,9 +45,9 @@ export const DisplayRestaurantById = () => {
 
     return (
         <div className='DisplayCardByRefNo'>
-            <AdminNavbar />
+            {/* <AdminNavbar /> */}
             <div className="SpecificRestaurants" style={{margin:'5%'}}>
-                <h1>Restaurant With Given Reference #</h1>&nbsp;
+                <h1 data-testid="mainhead">Restaurant With Given Reference #</h1>&nbsp;
 
         {/* CHECK IF SERVER SENT SOME DATA WITH GIVEN REF NO. */}
                 {resdata._id!==undefined ? <div> <RestaurantCard rest={resdata} handleDelete={handleDelete} /> </div> : <h5>No Restaurant with this Reference number</h5> }

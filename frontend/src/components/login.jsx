@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
-import { useAuth } from './authentication/auth';
+// import { useAuth } from './authentication/auth';
 
 
 export default function Login( ) {
@@ -10,8 +10,8 @@ export default function Login( ) {
         var adminEmail="admin@gmail.com"
         var adminPassword="admin"
 
-        const auth = useAuth()
-       // auth.logout()  // whenever user open login page page auth user is reset to null
+        // const auth=useAuth()
+       
 
         const navigate = useNavigate()  // to navigate on different screens
 
@@ -39,7 +39,7 @@ export default function Login( ) {
                 try {
 
                     user.role="admin"
-                    auth.login(user)
+                    // auth.login(user)
                     navigate('/admin/restaurant')
                     alert("Admin Login Successfull")
                     

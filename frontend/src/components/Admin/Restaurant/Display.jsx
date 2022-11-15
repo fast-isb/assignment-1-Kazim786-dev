@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom'
 import AdminNavbar from '../navbar.jsx'
 import RestaurantCard from './DisplayResCard'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 //add some bootsrap
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
@@ -21,7 +21,7 @@ export const DisplayRestaurant = () => {
     useEffect(() => {
         const fetchAllRestaurants = async () => {
             try {
-                const res = await axios.get("http://localhost:3001/admin/restaurant");
+                // const res = await axios.get("http://localhost:3001/admin/restaurant");
                 setResdata(res.data);
             }
             catch (err) {
@@ -38,8 +38,8 @@ export const DisplayRestaurant = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete("http://localhost:3001/admin/restaurant/" + id)
-            const res = await axios.get("http://localhost:3001/admin/restaurant");
+            // await axios.delete("http://localhost:3001/admin/restaurant/" + id)
+            // const res = await axios.get("http://localhost:3001/admin/restaurant");
             setResdata(res.data);
             alert("Restaurant Deleted Successfully!")
             //navigate('/admin/restaurant')
@@ -50,10 +50,10 @@ export const DisplayRestaurant = () => {
     }
 
     return (
+       
         <div>
-
-            <AdminNavbar />
-
+                {/* <AdminNavbar/> */}
+            
             <div>
                 <Form className="d-flex" style={{ width: '25%', margin: '2%' }}>
                     <Form.Control type="search" onChange={handleChange} name="refNo" placeholder="Find by Reference No." className="me-2" aria-label="Search" />

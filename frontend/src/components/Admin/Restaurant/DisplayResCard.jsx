@@ -21,12 +21,12 @@ function DisplayRestaurants(props) {
                     {props.rest.dateCreated.date}  {props.rest.dateCreated.time}
                 </Card.Text>
                 <Card.Footer>
-                    <Button variant="secondary" style={{ margin: '5%' }}>
+                    <Button data-testid="updatebtn" variant="secondary" style={{ margin: '5%' }}>
                         <Link to={`/admin/restaurant/update/${props.rest._id}`}
                             style={{ color: 'inherit', textDecoration: 'none' }} >Update
                         </Link>
                     </Button>
-                    <Button style={{ margin: '5%' }} variant="danger" onClick={() => props.handleDelete(props.rest._id) }>
+                    <Button data-testid="deletebtn" style={{ margin: '5%' }} variant="danger" onClick={() => props.handleDelete(props.rest._id) }>
                         Delete
                     </Button>
                 </Card.Footer>
