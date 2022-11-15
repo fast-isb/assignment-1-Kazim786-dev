@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import { useLocation,useNavigate } from "react-router-dom";
 import RestaurantCard from './DisplayResCard'
 // import AdminNavbar from '../navbar.jsx'
@@ -18,7 +18,7 @@ export const DisplayRestaurantById = () => {
     useEffect(() => {
         const fetchAllRestaurants = async () => {
             try {
-                // const res = await axios.get("http://localhost:3001/admin/restaurant/" + refNo);
+                const res = await axios.get("http://localhost:3001/admin/restaurant/" + refNo);
                 //const arr = [res.data]
                 // setResdata(arr.slice())
                 setResdata(res.data)
@@ -34,7 +34,7 @@ export const DisplayRestaurantById = () => {
     const navigate = useNavigate()
     const handleDelete = async (id) => {
         try {
-            // await axios.delete("http://localhost:3001/admin/restaurant/" + id)
+            await axios.delete("http://localhost:3001/admin/restaurant/" + id)
             navigate('/admin/restaurant')
             alert("Restaurant Deleted Successfully!")
         } catch (error) {

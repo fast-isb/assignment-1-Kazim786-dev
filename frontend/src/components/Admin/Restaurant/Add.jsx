@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -50,7 +50,7 @@ export const AddRestaurant = () => {
         }
         else {
             try {
-                // await axios.post("http://localhost:3001/admin/restaurant", rest)
+                await axios.post("http://localhost:3001/admin/restaurant", rest)
                 navigate('/admin/restaurant')
                 alert("New Restaurant Added Successfully!")
             } catch (error) {

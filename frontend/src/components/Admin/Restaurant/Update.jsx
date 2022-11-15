@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -47,7 +47,7 @@ export const EditRestaurant = () => {
         }
         else {
             try {
-                // const x= await axios.put(`http://localhost:3001/admin/restaurant/${id}`, rest)
+                const x= await axios.put(`http://localhost:3001/admin/restaurant/${id}`, rest)
                 navigate('/admin/restaurant')
                 if(x)
                     alert("Restaurant Info Updated Successfully!")
@@ -61,7 +61,7 @@ export const EditRestaurant = () => {
     // useEffect(() => {
     //     const fetchRestaurant = async () => {
     //         try {
-    //            const res = await axios.get("http://localhost:3001/admin/restaurant/"+id);
+    //           const res = await axios.get("http://localhost:3001/admin/restaurant/"+id);
     //             setRest(res.data);
     //         }
     //         catch (err) {
